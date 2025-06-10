@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - ApexGlobalis</title>
+    <link rel="stylesheet" href="payment.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="payment-container">
+        <div class="payment-card">
+            <div class="logo-container">
+                <img src="assets/logo_AG.png" alt="ApexGlobalis Logo" class="logo">
+            </div>
+            <h1>Payment Details</h1>
+            
+            <form id="payment-form" class="payment-form">
+                <div class="payment-methods">
+                    <div class="payment-method-option">
+                        <input type="radio" id="creditCard" name="paymentMethod" value="creditCard" checked>
+                        <label for="creditCard">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Credit Card</span>
+                        </label>
+                    </div>
+                    <div class="payment-method-option">
+                        <input type="radio" id="debitCard" name="paymentMethod" value="debitCard">
+                        <label for="debitCard">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Debit Card</span>
+                        </label>
+                    </div>
+                    <div class="payment-method-option">
+                        <input type="radio" id="netBanking" name="paymentMethod" value="netBanking">
+                        <label for="netBanking">
+                            <i class="fas fa-university"></i>
+                            <span>Net Banking</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Payment Information</h2>
+                    <div class="payment-sources">
+                        <img src="BankBanner.png" alt="Accepted Payment Methods" class="payment-banner">
+                    </div>
+
+                    <!-- Bank Selection and Account Details (initially hidden) -->
+                    <div class="bank-details" style="display: none;">
+                        <div class="form-group bank-select-group">
+                            <label for="bankSelect">Select Your Bank</label>
+                            <div class="bank-select-container">
+                                <select id="bankSelect" name="bankSelect" class="bank-dropdown">
+                                    <option value="">Choose your bank</option>
+                                    <option value="chase">Chase</option>
+                                    <option value="bofa">Bank of America</option>
+                                    <option value="wells">Wells Fargo</option>
+                                    <option value="citi">Citi</option>
+                                </select>
+                                <div class="bank-logo-container">
+                                    <img id="selectedBankLogo" src="" alt="Selected Bank Logo" class="bank-logo" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="routingNumber">Routing Number</label>
+                            <input type="text" id="routingNumber" name="routingNumber" pattern="[0-9]{9}" maxlength="9" placeholder="Enter 9-digit routing number">
+                        </div>
+                        <div class="form-group">
+                            <label for="accountNumber">Account Number</label>
+                            <input type="text" id="accountNumber" name="accountNumber" pattern="[0-9]{4,17}" maxlength="17" placeholder="Enter your account number">
+                        </div>
+                    </div>
+
+                    <!-- Card Fields (initially displayed) -->
+                    <div class="card-fields-container">
+                        <div class="form-group card-fields">
+                            <label for="cardHolderName">Card Holder Name</label>
+                            <input type="text" id="cardHolderName" name="cardHolderName" placeholder="Name as it appears on card" required>
+                        </div>
+                        <div class="form-group card-fields">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" name="cardNumber" pattern="[0-9]{16}" maxlength="16" required>
+                        </div>
+                        <div class="form-row card-fields">
+                            <div class="form-group">
+                                <label for="expiryDate">Expiry Date</label>
+                                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/([0-9]{2})" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" pattern="[0-9]{3,4}" maxlength="4" required>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-section">
+                    <div class="form-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="saveCard" name="saveCard">
+                            <span class="checkmark"></span>
+                            Save card for future payments
+                        </label>
+                    </div>
+                </div>
+
+                <div class="payment-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">$0.00</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="pay-button">Pay Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Format card number input
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        // Format expiry date input
+        document.getElementById('expiryDate').addEventListener('input', function(e) {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0,2) + '/' + value.slice(2);
+            }
+            this.value = value;
+        });
+
+        // Format CVV input
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        // Format routing number input
+        document.getElementById('routingNumber').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        // Format account number input
+        document.getElementById('accountNumber').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        // Handle expiry date validation on input
+        document.getElementById('expiryDate').addEventListener('input', function() {
+            if (this.validity.patternMismatch) {
+                this.classList.add('invalid');
+            } else {
+                this.classList.remove('invalid');
+            }
+        });
+
+        // Handle expiry date validation on blur (when the user clicks out of the field)
+        document.getElementById('expiryDate').addEventListener('blur', function() {
+             if (this.validity.patternMismatch) {
+                this.classList.add('invalid');
+            } else {
+                this.classList.remove('invalid');
+            }
+        });
+
+        // Handle payment method selection
+        const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+        const bankDetails = document.querySelector('.bank-details');
+        const cardFieldsContainer = document.querySelector('.card-fields-container'); // Get the new container
+        const bankSelect = document.getElementById('bankSelect');
+        const routingNumber = document.getElementById('routingNumber');
+        const accountNumber = document.getElementById('accountNumber');
+        const selectedBankLogo = document.getElementById('selectedBankLogo');
+
+        // Set initial state based on the checked radio button (Credit Card is default)
+        if (document.getElementById('creditCard').checked || document.getElementById('debitCard').checked) {
+            bankDetails.style.display = 'none';
+            cardFieldsContainer.style.display = 'block';
+            // Ensure card fields are required initially
+            cardFieldsContainer.querySelectorAll('input').forEach(input => input.required = true);
+            bankSelect.required = false;
+            routingNumber.required = false;
+            accountNumber.required = false;
+        } else if (document.getElementById('netBanking').checked) {
+             bankDetails.style.display = 'block';
+             cardFieldsContainer.style.display = 'none';
+             // Ensure bank fields are required initially
+             bankSelect.required = true;
+             routingNumber.required = true;
+             accountNumber.required = true;
+
+            // Trigger bank select change to show logo if a bank is already selected
+            if (bankSelect.value !== '') {
+                updateBankLogo(bankSelect.value);
+                selectedBankLogo.style.display = 'block';
+            }
+        }
+
+        paymentMethods.forEach(method => {
+            method.addEventListener('change', function() {
+                if (this.value === 'netBanking') {
+                    bankDetails.style.display = 'block';
+                    cardFieldsContainer.style.display = 'none'; // Hide the card container
+
+                    // Set required for bank fields, not for card fields
+                    bankSelect.required = true;
+                    routingNumber.required = true;
+                    accountNumber.required = true;
+                    cardFieldsContainer.querySelectorAll('input').forEach(input => input.required = false);
+
+                    // Trigger bank select change to show logo if a bank is already selected
+                    if (bankSelect.value !== '') {
+                        updateBankLogo(bankSelect.value);
+                        selectedBankLogo.style.display = 'block';
+                    }
+
+                } else { // Credit Card or Debit Card
+                    bankDetails.style.display = 'none';
+                    cardFieldsContainer.style.display = 'block'; // Show the card container
+
+                    // Set required for card fields, not for bank fields
+                    bankSelect.required = false;
+                    routingNumber.required = false;
+                    accountNumber.required = false;
+                    cardFieldsContainer.querySelectorAll('input').forEach(input => input.required = true);
+
+                    // Hide bank logo when not in Net Banking
+                    selectedBankLogo.style.display = 'none';
+                    selectedBankLogo.src = ''; // Clear the source
+                }
+            });
+        });
+
+        // Function to update the bank logo
+        function updateBankLogo(bankValue) {
+            const logoMap = {
+                'chase': 'chase.png',
+                'bofa': 'boa.png',
+                'wells': 'wf.png',
+                'citi': 'citi.png'
+            };
+
+            if (bankValue && logoMap[bankValue]) {
+                selectedBankLogo.src = ' ' + logoMap[bankValue];
+                selectedBankLogo.style.display = 'block';
+            } else {
+                selectedBankLogo.style.display = 'none';
+                selectedBankLogo.src = ''; // Clear the source
+            }
+        }
+
+        // Handle bank selection change
+        bankSelect.addEventListener('change', function() {
+            updateBankLogo(this.value);
+        });
+
+    </script>
+</body>
+</html>

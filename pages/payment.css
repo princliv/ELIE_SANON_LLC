@@ -1,0 +1,372 @@
+:root {
+    --primary: #0a2540;
+    --secondary: #01c3cd;
+    --accent: #00a4ef;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --success: #28a745;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+.payment-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: linear-gradient(rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.9)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+}
+
+.payment-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+}
+
+h1 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+input, select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(1, 195, 205, 0.1);
+}
+
+.payment-sources {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: var(--light);
+    border-radius: 8px;
+}
+
+.payment-banner {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+.payment-summary {
+    background-color: var(--light);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.summary-row.total {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--primary);
+    border-top: 1px solid #e2e8f0;
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.pay-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--secondary);
+    color: var(--primary);
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(1, 195, 205, 0.3);
+}
+
+.pay-button:hover {
+    background-color: var(--accent);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 164, 239, 0.4);
+}
+
+/* Error States */
+input:invalid, select:invalid {
+    border-color: #fc8181;
+}
+
+input:invalid:focus, select:invalid:focus {
+    box-shadow: 0 0 0 3px rgba(252, 129, 129, 0.1);
+}
+
+/* Loading State */
+.pay-button.loading {
+    background-color: #a0aec0;
+    cursor: not-allowed;
+}
+
+/* Success State */
+.pay-button.success {
+    background-color: var(--success);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .payment-card {
+        padding: 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.125rem;
+    }
+
+    .logo {
+        max-width: 150px;
+    }
+}
+
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.payment-method-option {
+    position: relative;
+}
+
+.payment-method-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.payment-method-option label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    background-color: var(--light);
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.payment-method-option label i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.payment-method-option label span {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.payment-method-option input[type="radio"]:checked + label {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.payment-method-option input[type="radio"]:checked + label i,
+.payment-method-option input[type="radio"]:checked + label span {
+    color: var(--primary);
+}
+
+.payment-method-option label:hover {
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+    .payment-methods {
+        grid-template-columns: 1fr;
+    }
+}
+
+.bank-select-group {
+    margin-bottom: 1.5rem;
+}
+
+.bank-select-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bank-dropdown {
+    flex-grow: 1;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+.bank-dropdown:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(1, 195, 205, 0.1);
+}
+
+.bank-dropdown option {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.bank-logo-container {
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.bank-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.bank-selection {
+    margin-bottom: 1.5rem;
+}
+
+.bank-details {
+    background-color: var(--light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.bank-details .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.bank-details .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.bank-details input {
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+.bank-details input::placeholder {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: normal;
+}
