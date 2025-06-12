@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Signup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-left">
+        <img src="../assets/footerlogo.png" alt="Company Logo" class="logo" />
+        <h1>Elevating Ambitions. Empowering Excellence</h1>
+        <p>We partner with forward-thinking businesses to overcome limitations and ignite transformative growth. Through innovative strategies, market intelligence, and bold execution, we enable sustainable leadership and a competitive edge that lasts.</p>
+    </div>
+    <div class="auth-right">
+        <div class="toggle-box">
+        <button id="loginToggle" class="active">Login</button>
+        <button id="signupToggle">Signup</button>
+        </div>
+        <form id="loginForm" class="form active">
+        <h2>Welcome Back </h2>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        
+        <p class="forgot-password"><a href="#">Forgot Password?</a></p>
+        
+        <button class="btn-auth">Login</button>
+        
+        <p class="switch">Don't have an account? <span id="switchToSignup">Signup</span></p>
+        </form>
+
+
+        <form id="signupForm" class="form">
+        <h2>Create Account</h2>
+
+        <div class="form-row double">
+            <input type="text" placeholder="First Name" required />
+            <input type="text" placeholder="Last Name" required />
+        </div>
+
+        <div class="form-row">
+            <input type="email" placeholder="Email ID" required />
+        </div>
+
+        <div class="form-row">
+            <input type="tel" placeholder="Contact Number" required />
+        </div>
+
+        <div class="form-row password-row">
+            <input type="password" placeholder="Password" required id="password" />
+            <span class="info-icon" title="Password must include: 1 uppercase, 1 lowercase, 1 number, 1 special character, and be at least 8 characters long.">ℹ️</span>
+        </div>
+
+        <div class="form-row">
+            <input type="password" placeholder="Confirm Password" required />
+        </div>
+
+        <button class="btn-auth">Signup</button>
+        <p class="switch">Already have an account? <span id="switchToLogin">Login</span></p>
+        </form>
+
+    </div>
+  </div>
+
+
+  <script>
+    const loginToggle = document.getElementById('loginToggle');
+    const signupToggle = document.getElementById('signupToggle');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const switchToSignup = document.getElementById('switchToSignup');
+    const switchToLogin = document.getElementById('switchToLogin');
+
+    loginToggle.addEventListener('click', () => {
+      loginForm.classList.add('active');
+      signupForm.classList.remove('active');
+      loginToggle.classList.add('active');
+      signupToggle.classList.remove('active');
+    });
+
+    signupToggle.addEventListener('click', () => {
+      signupForm.classList.add('active');
+      loginForm.classList.remove('active');
+      signupToggle.classList.add('active');
+      loginToggle.classList.remove('active');
+    });
+
+    switchToSignup.addEventListener('click', () => signupToggle.click());
+    switchToLogin.addEventListener('click', () => loginToggle.click());
+  </script>
+</body>
+</html>

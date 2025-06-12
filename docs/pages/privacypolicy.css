@@ -1,0 +1,266 @@
+/* Reset + Smooth scroll */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0b1c30 0%, #1c2d44 100%);
+  color: #f4f4f4;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff;
+  color: #0b1c30;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  animation: fadeInDown 1s ease-in-out;
+}
+.logo img {
+  max-height: 50px;
+  vertical-align: middle;
+}
+.nav-links {
+  display: flex;
+  gap: 1.2rem;
+  transition: all 0.3s ease;
+  align-items: center;
+}
+.nav-links a {
+  color: #0b1c30;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-links a::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #57affc;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  transition: 0.3s ease;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+.nav-links a:hover {
+  color: #f7944d;
+}
+.btn-pay {
+  padding: 0.45rem 1rem;
+  background: #f7944d;
+  color: #0b1c30;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.btn-pay:hover {
+  background: #db7a03;
+  color: #ffffff !important;
+}
+.btn-login {
+  padding: 0.45rem 1rem;
+  background: #57affc;
+  color: #f4f4f4;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.btn-login:hover {
+  background: #1565c0;
+  color: #ffffff !important;
+}
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #0b1c30;
+  color: #ffffff;
+  padding: 4rem 2rem 2rem;
+  font-size: 0.95rem;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+}
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.footer-branding {
+  flex: 1 1 300px;
+}
+.footer-branding img.footer-logo {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+.footer-branding p {
+  color: #d1dce5;
+  line-height: 1.6;
+}
+.footer-links,
+.footer-contact {
+  flex: 1 1 200px;
+}
+.footer-links h4,
+.footer-contact h4 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-links ul li {
+  margin-bottom: 0.5rem;
+}
+.footer-links ul li a {
+  color: #d1dce5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-links ul li a:hover {
+  color: #e85d04;
+}
+.footer-contact p {
+  margin-bottom: 0.5rem;
+  color: #d1dce5;
+}
+.footer-contact i {
+  color: #e85d04;
+  margin-right: 0.5rem;
+}
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+  color: #aab7c4;
+}
+
+/* Animated Container */
+.policy-section {
+  padding: 4rem 2rem;
+  margin: 5rem auto; /* Add space above and below */
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1.3s ease-in-out both;
+}
+
+
+/* Headings */
+.policy-section h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #f7944d;
+  font-weight: 700;
+  animation: popIn 1s ease;
+}
+.policy-section h3 {
+  font-size: 1.6rem;
+  color: #57affc;
+  margin: 2rem 0 1rem;
+  border-left: 4px solid #57affc;
+  padding-left: 1rem;
+}
+
+/* Text */
+.policy-section p {
+  font-size: 1.15rem;
+  color: #d1dce5;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.policy-highlight {
+  color: #f7944d;
+  font-weight: bold;
+}
+
+/* Divider */
+.divider {
+  height: 3px;
+  width: 60px;
+  background: #57affc;
+  margin: 2rem auto;
+  border-radius: 50px;
+  animation: scaleIn 0.6s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .policy-section {
+    padding: 4rem 1rem;
+  }
+  .policy-section h2 {
+    font-size: 2rem;
+  }
+  .policy-section h3 {
+    font-size: 1.3rem;
+  }
+  .policy-section p {
+    font-size: 1rem;
+  }
+}

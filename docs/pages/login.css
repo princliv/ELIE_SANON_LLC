@@ -1,0 +1,357 @@
+
+:root {
+  --primary: #0b1c30;
+  --secondary: #e85d04;
+  --accent: #ff7600;
+  --light: #f4f4f4;
+  --dark: #212529;
+  --success: #28a745;
+  --navy-dark: #08101a;
+  --gold-light: #f7f9fc;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, var(--primary), var(--navy-dark));
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.auth-container {
+  display: flex;
+  width: 90%;
+  max-width: 900px;
+  background-color: var(--light);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(26, 43, 76, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.auth-left, .auth-right {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-left {
+  flex: 1;
+  background: linear-gradient(rgba(26, 43, 76, 0.85), rgba(26, 43, 76, 0.85)),
+              url('../assets/about.jpg') center center / cover no-repeat;
+  color: var(--light);
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.auth-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+.auth-left .logo {
+  max-width: 250px;
+  height: auto;
+  margin: 0 auto 20px auto;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.3));
+}
+
+.auth-left h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--secondary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.auth-left p {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.auth-right {
+  flex: 1;
+  background-color: var(--light);
+}
+
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+  }
+
+  .auth-left, .auth-right {
+    padding: 20px;
+  }
+
+  .auth-left {
+    text-align: center;
+  }
+
+  .form-row.double {
+    flex-direction: column;
+  }
+}
+
+.toggle-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: var(--gold-light);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.toggle-box button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background-color: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.toggle-box button.active {
+  background-color: var(--secondary);
+  color: var(--primary);
+  box-shadow: 0 2px 8px rgba(232, 93, 4, 0.3);
+}
+
+.toggle-box button:hover:not(.active) {
+  background-color: rgba(232, 93, 4, 0.2);
+}
+
+.form {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form.active {
+  display: flex;
+}
+
+.form h2 {
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.form input:focus {
+  border-color: var(--secondary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(232, 93, 4, 0.1);
+}
+
+.form input:hover {
+  border-color: var(--accent);
+}
+
+.forgot-password {
+  text-align: right;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.forgot-password a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: var(--transition);
+  font-weight: 600;
+}
+
+.forgot-password a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+.btn-auth {
+  background: linear-gradient(135deg, var(--secondary), var(--accent));
+  color: var(--primary);
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(232, 93, 4, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-auth:hover {
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+  box-shadow: 0 6px 20px rgba(232, 93, 4, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-auth:active {
+  transform: translateY(0);
+}
+
+.switch {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.switch span {
+  color: var(--secondary);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.switch span:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.form-row.double {
+  flex-direction: row;
+  gap: 10px;
+}
+
+.form-row.double input {
+  flex: 1;
+}
+
+.password-row {
+  position: relative;
+}
+
+.info-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--secondary);
+  background: var(--light);
+  padding: 2px;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.info-icon:hover {
+  color: var(--accent);
+  background: var(--gold-light);
+}
+
+.info-icon:hover::after {
+  content: "Password must include: 1 uppercase, 1 lowercase, 1 number, 1 special character, and be at least 8 characters long.";
+  position: absolute;
+  top: 125%;
+  right: 0;
+  width: 260px;
+  background: var(--light);
+  color: var(--dark);
+  font-size: 0.85rem;
+  padding: 12px;
+  border: 2px solid var(--secondary);
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(26, 43, 76, 0.15);
+  z-index: 10;
+  line-height: 1.4;
+}
+
+.form input::placeholder {
+  color: #999;
+  opacity: 0.8;
+}
+
+.form input:focus::placeholder {
+  opacity: 0.5;
+}
+
+.btn-auth.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-auth.loading::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.form input.success {
+  border-color: var(--success);
+  background-color: rgba(40, 167, 69, 0.05);
+}
+
+.form input.error {
+  border-color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.05);
+}
+
+.form.active {
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
