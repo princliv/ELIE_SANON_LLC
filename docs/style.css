@@ -746,13 +746,35 @@ body {
 
 /* Contact Section */
 .contact-split-section {
+  background: url('assets/contact.jpg') center center/cover no-repeat;
+  background-attachment: fixed;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 5rem 2rem;
   margin-top: 3rem;
-  background: #f9f9f9;
   gap: 2rem;
+  color: #0b1c30;
+  overflow: hidden;
+  animation: fadeIn 1.5s ease-in-out;
+  z-index: 0;
+}
+
+.contact-split-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 0;
+}
+
+.contact-split-section > * {
+  position: relative;
+  z-index: 2;
 }
 
 .contact-card {
@@ -940,6 +962,51 @@ body {
   line-height: 1.6;
 }
 
+.footer-socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #0b1c30; /* Base dark color */
+  color: #fff;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  
+  text-decoration: none;
+  border: none;
+  outline: none;
+  
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.social-icon.twitter:hover {
+  background-color: #000000;
+}
+
+.social-icon.linkedin:hover {
+  background-color: #0077b5;
+}
+
+.social-icon.facebook:hover {
+  background-color: #3b5998;
+}
+
+.social-icon.instagram:hover {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  color: #fff; /* Ensure icon stays visible */
+}
+
 .footer-links,
 .footer-contact {
   flex: 1 1 200px;
@@ -970,14 +1037,35 @@ body {
   color: #e85d04;
 }
 
-.footer-contact p {
-  margin-bottom: 0.5rem;
+.footer-contact {
   color: #d1dce5;
 }
 
+.footer-contact h4 {
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.footer-contact p {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+
 .footer-contact i {
-  color: #e85d04;
-  margin-right: 0.5rem;
+  background-color: #e85d04;
+  color: #fff;
+  padding: 0.6rem;
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.95rem;
 }
 
 .footer-bottom {

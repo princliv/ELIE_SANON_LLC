@@ -1,7 +1,7 @@
 
 :root {
   --primary: #0b1c30;
-  --secondary: #e85d04;
+  --secondary: #e77c3a;
   --accent: #ff7600;
   --light: #f4f4f4;
   --dark: #212529;
@@ -118,7 +118,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  background-color: var(--gold-light);
+  background-color: #e5e5e5;
   border-radius: 8px;
   padding: 4px;
 }

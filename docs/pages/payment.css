@@ -1,6 +1,6 @@
 :root {
   --primary: #0b1c30;       /* Deep navy (used in navbar, footer) */
-  --secondary: #e85d04;     /* Muted dark gray-blue for subheadings */
+  --secondary: #e77c3a;     /* Muted dark gray-blue for subheadings */
   --accent:  #3d4d63;        /* Warm vibrant orange (buttons/icons) */
   --light: #f4f4f4;         /* Light gray background */
   --dark: #121212;          /* Backup dark for contrast or overlays */
