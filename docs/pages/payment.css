@@ -28,7 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    background: linear-gradient(rgba(10, 37, 64, 0.9), rgba(5, 24, 44, 0.9)), url('../assets/payments.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(10, 37, 64, 0.9), rgba(5, 24, 44, 0.9)), url('../assets/payment.jpg') no-repeat center center/cover;
 }
 
 .payment-card {
