@@ -64,31 +64,173 @@
     </div>
   </div>
 
-
   <script>
-    const loginToggle = document.getElementById('loginToggle');
-    const signupToggle = document.getElementById('signupToggle');
-    const loginForm = document.getElementById('loginForm');
-    const signupForm = document.getElementById('signupForm');
-    const switchToSignup = document.getElementById('switchToSignup');
-    const switchToLogin = document.getElementById('switchToLogin');
+    // Get DOM elements
+    const loginToggle = document.getElementById("loginToggle");
+    const signupToggle = document.getElementById("signupToggle");
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+    const switchToSignup = document.getElementById("switchToSignup");
+    const switchToLogin = document.getElementById("switchToLogin");
+    const visualIndicator = document.getElementById("visual-indicator");
 
-    loginToggle.addEventListener('click', () => {
-      loginForm.classList.add('active');
-      signupForm.classList.remove('active');
-      loginToggle.classList.add('active');
-      signupToggle.classList.remove('active');
-    });
+    // Function to show login/signup form
+    function showForm(formType, event) {
+      // Toggle buttons
+      document
+        .querySelectorAll(".toggle-btn")
+        .forEach((btn) => btn.classList.remove("active"));
+      if (event?.target) event.target.classList.add("active");
+      if (formType === "login") {
+        loginForm.classList.add("active");
+        signupForm.classList.remove("active");
+        loginToggle.classList.add("active");
+        signupToggle.classList.remove("active");
+      } else {
+        signupForm.classList.add("active");
+        loginForm.classList.remove("active");
+        signupToggle.classList.add("active");
+        loginToggle.classList.remove("active");
+      }
 
-    signupToggle.addEventListener('click', () => {
-      signupForm.classList.add('active');
-      loginForm.classList.remove('active');
-      signupToggle.classList.add('active');
-      loginToggle.classList.remove('active');
-    });
+      // Update welcome message and indicator
+      updateWelcomeMessage(formType);
+    }
 
-    switchToSignup.addEventListener('click', () => signupToggle.click());
-    switchToLogin.addEventListener('click', () => loginToggle.click());
+    // Welcome message visual change
+    function updateWelcomeMessage(formType) {
+      const title = document.getElementById("welcome-title");
+      const text = document.getElementById("welcome-text");
+
+      if (formType === "login") {
+        title.textContent = "Welcome Back";
+        text.textContent =
+          "Access your Illuminant Vitam dashboard to continue optimizing your business performance.";
+        if (visualIndicator) visualIndicator.innerHTML = "";
+      } else {
+        title.textContent = "Begin Your Transformation";
+        text.textContent =
+          "Join Illuminant Vitam to unlock data-driven strategies that illuminate your business potential.";
+        if (visualIndicator) {
+          visualIndicator.innerHTML = `
+            <div style="display: flex; align-items: center; width: 100%;">
+              <div style="width: 40px; height: 3px; background-color: #d4af37;"></div>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#d4af37" style="margin: 0 10px; animation: pulse 2s infinite;">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="#d4af37" stroke-width="2" fill="none"></path>
+              </svg>
+              <div style="width: 40px; height: 3px; background-color: #d4af37;"></div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    // Add arrow pulse animation
+    document.head.insertAdjacentHTML(
+      "beforeend",
+      `
+      <style>
+        @keyframes pulse {
+          0% { transform: translateX(0); }
+          50% { transform: translateX(5px); }
+          100% { transform: translateX(0); }
+        }
+      </style>
+    `
+    );
+
+    // Toggle logic
+    loginToggle.addEventListener("click", (e) => showForm("login", e));
+    signupToggle.addEventListener("click", (e) => showForm("signup", e));
+    switchToSignup.addEventListener("click", () => showForm("signup"));
+    switchToLogin.addEventListener("click", () => showForm("login"));
+
+    // Login form submission
+    document
+      .getElementById("login-form")
+      .addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById("login-email").value.trim();
+        const password = document.getElementById("login-password").value;
+
+        try {
+          const response = await fetch("http://localhost:8000/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            alert("Login Successful!");
+            localStorage.setItem("accessToken", data.accessToken);
+            window.location.href = "dashboard.html";
+          } else {
+            alert(data.message || "Login failed.");
+          }
+        } catch (err) {
+          alert("Error connecting to server.");
+          console.error(err);
+        }
+      });
+
+    // Signup form submission
+    document
+      .getElementById("signup-form")
+      .addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const firstName = document
+          .getElementById("signup-fname")
+          .value.trim();
+        const lastName = document.getElementById("signup-lname").value.trim();
+        const email = document.getElementById("signup-email").value.trim();
+        const dob = document.getElementById("signup-dob").value;
+        const password = document.getElementById("signup-password").value;
+        const confirmPassword = document.getElementById("signup-confirm").value;
+        const contactNumber = document
+          .getElementById("signup-contact")
+          .value.trim();
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match!");
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            "http://localhost:8000/api/auth/signup",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                firstName,
+                lastName,
+                email,
+                dob,
+                password,
+                confirmPassword,
+                contactNumber,
+              }),
+            }
+          );
+
+          const data = await response.json();
+
+          if (response.ok) {
+            alert("Signup Successful!");
+            showForm("login");
+          } else {
+            alert(data.message || "Signup failed.");
+          }
+        } catch (err) {
+          alert("Error connecting to server.");
+          console.error(err);
+        }
+      });
   </script>
+
 </body>
 </html>
