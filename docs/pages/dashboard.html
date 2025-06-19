@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ELIE SANON | Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">
+        <img src="../headerlogo.png" alt="ELIE SANON LLC Logo">
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="../pages/payment.html" class="btn-pay"><i class="fas fa-credit-card"></i> Pay Now</a>
+      <a href="../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+  </header>
+
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <h2>Dashboard</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#"><i class="fas fa-chart-line"></i> Overview</a>
+        <a href="#"><i class="fas fa-briefcase"></i> Projects</a>
+        <a href="#"><i class="fas fa-users"></i> Clients</a>
+        <a href="#"><i class="fas fa-envelope-open-text"></i> Messages</a>
+        <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="dashboard-header">
+        <h1>Welcome Back, Consultant!</h1>
+        <div class="profile-summary">
+          <img src="../assets/profile.jpg" alt="User" />
+          <div>
+            <h4>John Doe</h4>
+            <p>Senior Consultant</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Cards Section -->
+      <section class="cards-section">
+        <div class="card" data-aos="zoom-in">
+          <i class="fas fa-bullseye"></i>
+          <h3>Strategy Plans</h3>
+          <p>12 Active</p>
+        </div>
+        <div class="card" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-handshake"></i>
+          <h3>Clients</h3>
+          <p>8 New This Month</p>
+        </div>
+        <div class="card" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-tasks"></i>
+          <h3>Tasks</h3>
+          <p>24 Pending</p>
+        </div>
+        <div class="card" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-comments"></i>
+          <h3>Messages</h3>
+          <p>5 Unread</p>
+        </div>
+      </section>
+
+      <!-- Charts & Activities -->
+      <section class="dashboard-analytics">
+        <div class="analytics-card">
+          <h3>Project Completion</h3>
+          <canvas id="projectChart"></canvas>
+        </div>
+        <div class="activity-feed">
+          <h3>Recent Activity</h3>
+          <ul>
+            <li><i class="fas fa-user-plus"></i> New client onboarded: <strong>ABC Inc.</strong></li>
+            <li><i class="fas fa-file-alt"></i> Strategy report uploaded</li>
+            <li><i class="fas fa-bell"></i> Reminder: Client meeting at 3PM</li>
+            <li><i class="fas fa-check"></i> Task completed: Market Research</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+<!-- Footer -->
+<footer class="site-footer" data-aos="fade-up">
+  <div class="footer-container">
+    <div class="footer-top">
+      <div class="footer-branding">
+        <img src="assets/footerlogo.png" alt="ELIE SANON LLC Logo" class="footer-logo" />
+        <p>Empowering businesses to unlock their true potential through strategic guidance and insight.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon twitter" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-icon linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="pages/privacypolicy.html">Privacy Policy</a></li>
+          <li><a href="pages/TermsConditions.html">Terms and Conditions</a></li>
+          <li><a href="pages/Return.html">Return and Refund Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- New Services Column -->
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Business Strategy</a></li>
+          <li><a href="#services">Operational Consulting</a></li>
+          <li><a href="#services">Organizational Design</a></li>
+          <li><a href="#services">Innovation Consulting</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-envelope"></i> contact@eliesanon.com</p>
+        <p><i class="fas fa-phone"></i> 888 274 9017</p>
+        <p><i class="fas fa-fax"></i> (702) 560 0125</p>
+        <p><i class="fas fa-map-marker-alt"></i> 6130 Elton Avenue, Las Vegas, NV 89107, USA</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 ELIE SANON LLC. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('projectChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Completed', 'Ongoing', 'Pending'],
+        datasets: [{
+          data: [60, 25, 15],
+          backgroundColor: ['#57affc', '#f7944d', '#e85d04'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

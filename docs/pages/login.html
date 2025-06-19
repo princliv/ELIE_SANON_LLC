@@ -10,57 +10,63 @@
 <body>
   <div class="auth-container">
     <div class="auth-left">
-        <img src="../assets/footerlogo.png" alt="Company Logo" class="logo" />
-        <h1>Elevating Ambitions. Empowering Excellence</h1>
-        <p>We partner with forward-thinking businesses to overcome limitations and ignite transformative growth. Through innovative strategies, market intelligence, and bold execution, we enable sustainable leadership and a competitive edge that lasts.</p>
+      <img src="../assets/footerlogo.png" alt="Company Logo" class="logo" />
+      <h1 id="welcome-title">Elevating Ambitions. Empowering Excellence</h1>
+      <p id="welcome-text">
+        We partner with forward-thinking businesses to overcome limitations and ignite transformative growth. Through innovative strategies, market intelligence, and bold execution, we enable sustainable leadership and a competitive edge that lasts.
+      </p>
+      <div id="visual-indicator"></div>
     </div>
+
     <div class="auth-right">
-        <div class="toggle-box">
-        <button id="loginToggle" class="active">Login</button>
-        <button id="signupToggle">Signup</button>
-        </div>
-        <form id="loginForm" class="form active">
+      <div class="toggle-box">
+        <button id="loginToggle" class="active toggle-btn">Login</button>
+        <button id="signupToggle" class="toggle-btn">Signup</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="form active">
         <h2>Welcome Back </h2>
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
-        
+        <input type="email" id="login-email" placeholder="Email" required />
+        <input type="password" id="login-password" placeholder="Password" required />
         <p class="forgot-password"><a href="#">Forgot Password?</a></p>
-        
-        <button class="btn-auth">Login</button>
-        
+        <button type="submit" class="btn-auth">Login</button>
         <p class="switch">Don't have an account? <span id="switchToSignup">Signup</span></p>
-        </form>
+      </form>
 
-
-        <form id="signupForm" class="form">
+      <!-- Signup Form -->
+      <form id="signupForm" class="form">
         <h2>Create Account</h2>
 
         <div class="form-row double">
-            <input type="text" placeholder="First Name" required />
-            <input type="text" placeholder="Last Name" required />
+          <input type="text" id="signup-fname" placeholder="First Name" required />
+          <input type="text" id="signup-lname" placeholder="Last Name" required />
         </div>
 
         <div class="form-row">
-            <input type="email" placeholder="Email ID" required />
+          <input type="email" id="signup-email" placeholder="Email ID" required />
         </div>
 
         <div class="form-row">
-            <input type="tel" placeholder="Contact Number" required />
+          <input type="tel" id="signup-contact" placeholder="Contact Number" required />
+        </div>
+
+        <div class="form-row">
+          <input type="date" id="signup-dob" placeholder="Date of Birth" required />
         </div>
 
         <div class="form-row password-row">
-            <input type="password" placeholder="Password" required id="password" />
-            <span class="info-icon" title="Password must include: 1 uppercase, 1 lowercase, 1 number, 1 special character, and be at least 8 characters long.">ℹ️</span>
+          <input type="password" id="signup-password" placeholder="Password" required />
+          <span class="info-icon" title="Password must include: 1 uppercase, 1 lowercase, 1 number, 1 special character, and be at least 8 characters long.">ℹ️</span>
         </div>
 
         <div class="form-row">
-            <input type="password" placeholder="Confirm Password" required />
+          <input type="password" id="signup-confirm" placeholder="Confirm Password" required />
         </div>
 
-        <button class="btn-auth">Signup</button>
+        <button type="submit" class="btn-auth">Signup</button>
         <p class="switch">Already have an account? <span id="switchToLogin">Login</span></p>
-        </form>
-
+      </form>
     </div>
   </div>
 
@@ -74,13 +80,18 @@
     const switchToLogin = document.getElementById("switchToLogin");
     const visualIndicator = document.getElementById("visual-indicator");
 
-    // Function to show login/signup form
+    // Toggle logic
+    loginToggle.addEventListener("click", (e) => showForm("login", e));
+    signupToggle.addEventListener("click", (e) => showForm("signup", e));
+    switchToSignup.addEventListener("click", () => showForm("signup"));
+    switchToLogin.addEventListener("click", () => showForm("login"));
+
     function showForm(formType, event) {
-      // Toggle buttons
-      document
-        .querySelectorAll(".toggle-btn")
-        .forEach((btn) => btn.classList.remove("active"));
+      document.querySelectorAll(".toggle-btn").forEach((btn) =>
+        btn.classList.remove("active")
+      );
       if (event?.target) event.target.classList.add("active");
+
       if (formType === "login") {
         loginForm.classList.add("active");
         signupForm.classList.remove("active");
@@ -93,11 +104,9 @@
         loginToggle.classList.remove("active");
       }
 
-      // Update welcome message and indicator
       updateWelcomeMessage(formType);
     }
 
-    // Welcome message visual change
     function updateWelcomeMessage(formType) {
       const title = document.getElementById("welcome-title");
       const text = document.getElementById("welcome-text");
@@ -125,7 +134,7 @@
       }
     }
 
-    // Add arrow pulse animation
+    // Arrow pulse animation
     document.head.insertAdjacentHTML(
       "beforeend",
       `
@@ -139,98 +148,79 @@
     `
     );
 
-    // Toggle logic
-    loginToggle.addEventListener("click", (e) => showForm("login", e));
-    signupToggle.addEventListener("click", (e) => showForm("signup", e));
-    switchToSignup.addEventListener("click", () => showForm("signup"));
-    switchToLogin.addEventListener("click", () => showForm("login"));
-
     // Login form submission
-    document
-      .getElementById("login-form")
-      .addEventListener("submit", async function (e) {
-        e.preventDefault();
+    loginForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value.trim();
+      const password = document.getElementById("login-password").value;
 
-        const email = document.getElementById("login-email").value.trim();
-        const password = document.getElementById("login-password").value;
+      try {
+        const response = await fetch("http://localhost:8000/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
 
-        try {
-          const response = await fetch("http://localhost:8000/api/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
-          });
+        const data = await response.json();
 
-          const data = await response.json();
-
-          if (response.ok) {
-            alert("Login Successful!");
-            localStorage.setItem("accessToken", data.accessToken);
-            window.location.href = "dashboard.html";
-          } else {
-            alert(data.message || "Login failed.");
-          }
-        } catch (err) {
-          alert("Error connecting to server.");
-          console.error(err);
+        if (response.ok) {
+          alert("Login Successful!");
+          localStorage.setItem("accessToken", data.accessToken);
+          window.location.href = "dashboard.html";
+        } else {
+          alert(data.message || "Login failed.");
         }
-      });
+      } catch (err) {
+        alert("Error connecting to server.");
+        console.error(err);
+      }
+    });
 
     // Signup form submission
-    document
-      .getElementById("signup-form")
-      .addEventListener("submit", async function (e) {
-        e.preventDefault();
+    signupForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-        const firstName = document
-          .getElementById("signup-fname")
-          .value.trim();
-        const lastName = document.getElementById("signup-lname").value.trim();
-        const email = document.getElementById("signup-email").value.trim();
-        const dob = document.getElementById("signup-dob").value;
-        const password = document.getElementById("signup-password").value;
-        const confirmPassword = document.getElementById("signup-confirm").value;
-        const contactNumber = document
-          .getElementById("signup-contact")
-          .value.trim();
+      const firstName = document.getElementById("signup-fname").value.trim();
+      const lastName = document.getElementById("signup-lname").value.trim();
+      const email = document.getElementById("signup-email").value.trim();
+      const dob = document.getElementById("signup-dob").value;
+      const password = document.getElementById("signup-password").value;
+      const confirmPassword = document.getElementById("signup-confirm").value;
+      const contactNumber = document.getElementById("signup-contact").value.trim();
 
-        if (password !== confirmPassword) {
-          alert("Passwords do not match!");
-          return;
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:8000/api/auth/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            dob,
+            password,
+            confirmPassword,
+            contactNumber,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("Signup Successful!");
+          showForm("login");
+        } else {
+          alert(data.message || "Signup failed.");
         }
-
-        try {
-          const response = await fetch(
-            "http://localhost:8000/api/auth/signup",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                firstName,
-                lastName,
-                email,
-                dob,
-                password,
-                confirmPassword,
-                contactNumber,
-              }),
-            }
-          );
-
-          const data = await response.json();
-
-          if (response.ok) {
-            alert("Signup Successful!");
-            showForm("login");
-          } else {
-            alert(data.message || "Signup failed.");
-          }
-        } catch (err) {
-          alert("Error connecting to server.");
-          console.error(err);
-        }
-      });
+      } catch (err) {
+        alert("Error connecting to server.");
+        console.error(err);
+      }
+    });
   </script>
-
 </body>
 </html>
