@@ -478,7 +478,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(to right, rgba(250, 226, 211, 0.8), rgba(247, 249, 252, 0.8));
   z-index: 0;
 }
 
@@ -744,186 +744,174 @@ body {
   transform: translateY(-2px);
 }
 
-/* Contact Section */
-.contact-split-section {
-  background: url('assets/contact.jpg') center center/cover no-repeat;
-  background-attachment: fixed;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 5rem 2rem;
+.contact-split-modern {
   margin-top: 3rem;
-  gap: 2rem;
-  color: #0b1c30;
-  overflow: hidden;
-  animation: fadeIn 1.5s ease-in-out;
-  z-index: 0;
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: 
+    linear-gradient(to right, rgba(250, 226, 211, 0.8), rgba(247, 249, 252, 0.8)),
+    url('assets/contact.jpg') center center / cover no-repeat;
 }
 
-.contact-split-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+
+/* Contact Container Box */
+.contact-box {
+  display: flex;
   width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  z-index: 0;
-}
-
-.contact-split-section > * {
-  position: relative;
-  z-index: 2;
-}
-
-.contact-card {
-  flex: 1 1 400px;
-  max-width: 420px;
-  background: #ffffff;
-  border: 2.5px solid #f7944d; /* Orange border */
+  max-width: 1100px;
   border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 8px 30px rgba(11, 28, 48, 0.25); /* Shadow in #0b1c30 */
-  animation-duration: 1.5s;
-  color: #0b1c30;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: #ffffff;
 }
 
-.contact-card h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+/* Left Side: Modern Form */
+.contact-left {
+  flex: 1;
+  padding: 3rem;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.contact-left h2 {
+  font-size: 2.2rem;
   color: #f7944d;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-align: left;
+  position: relative;
 }
 
+.contact-left h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: #f7944d;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+}
+
+/* Floating Form Modern */
 .floating-form {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  gap: 1.8rem;
 }
 
 .floating-form .input-group {
   position: relative;
-  margin-bottom: 1.5rem;
 }
 
 .floating-form input,
 .floating-form textarea {
   width: 100%;
-  padding: 1rem 1rem 0.5rem;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid #ccc;
+  padding: 1.2rem 1rem 0.6rem;
+  background-color: #f9f9f9;
+  border: 2px solid transparent;
+  border-radius: 12px;
   font-size: 1rem;
+  transition: all 0.3s ease;
   color: #0b1c30;
-  transition: border 0.3s ease;
-}
-
-.floating-form label {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  color: #888;
-  font-size: 1rem;
-  pointer-events: none;
-  transition: 0.3s ease;
-}
-
-.floating-form input:focus + label,
-.floating-form input:not(:placeholder-shown) + label,
-.floating-form textarea:focus + label,
-.floating-form textarea:not(:placeholder-shown) + label {
-  top: -0.8rem;
-  left: 0;
-  font-size: 0.85rem;
-  color: #0b1c30;
-}
-
-.label-static {
-  top: -0.8rem !important;
-  font-size: 0.85rem !important;
+  box-shadow: inset 0 0 0 1px #ccc;
 }
 
 .floating-form input:focus,
 .floating-form textarea:focus {
-  border-color: #f7944d;
   outline: none;
+  box-shadow: inset 0 0 0 2px #f7944d;
+  background-color: #fff;
 }
 
-/* Buttons bottom aligned */
+.floating-form label {
+  position: absolute;
+  top: 1.2rem;
+  left: 1rem;
+  font-size: 1rem;
+  color: #999;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+/* Animated Floating Label */
+.floating-form input:focus + label,
+.floating-form input:not(:placeholder-shown) + label,
+.floating-form textarea:focus + label,
+.floating-form textarea:not(:placeholder-shown) + label {
+  top: -0.6rem;
+  left: 0.9rem;
+  font-size: 0.75rem;
+  background: #fff;
+  padding: 0 0.4rem;
+  color: #f7944d;
+}
+
+/* Modern Submit Button */
 .btn-glow {
-  margin-top: auto;
-  background: #f7944d;
+  background: linear-gradient(to right, #f7944d, #f77062);
   color: #fff;
   border: none;
-  padding: 0.9rem 1.8rem;
-  border-radius: 50px;
+  padding: 0.9rem 2rem;
+  border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 0 12px #f7944d88;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(247, 148, 77, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   align-self: flex-start;
-}
-
-.btn-glow.blue {
-  background: #57affc;
-  box-shadow: 0 0 12px #57affc88;
 }
 
 .btn-glow:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 25px #f7944d;
+  box-shadow: 0 6px 30px rgba(247, 148, 77, 0.6);
 }
 
-.btn-glow.blue:hover {
-  box-shadow: 0 0 25px #57affc;
+/* Right Side: Image */
+.contact-right {
+  flex: 1;
+  background: #fdf5f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Animations */
-@keyframes slideLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-left {
-  animation: slideLeft 1.4s ease forwards;
-}
-
-.animate-right {
-  animation: slideRight 1.4s ease forwards;
+.contact-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: float 3s ease-in-out infinite;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .contact-split-section {
+@media (max-width: 992px) {
+  .contact-box {
     flex-direction: column;
   }
 
+  .contact-left,
+  .contact-right {
+    flex: unset;
+    width: 100%;
+  }
+
+  .contact-left {
+    padding: 2rem;
+  }
+
   .btn-glow {
-    align-self: stretch;
-    text-align: center;
+    align-self: center;
+  }
+
+  .contact-right {
+    padding: 2rem 0;
   }
 }
 
