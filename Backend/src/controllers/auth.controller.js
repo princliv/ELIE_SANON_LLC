@@ -1,6 +1,6 @@
 // src/controllers/auth.controller.js
 import { User } from "../models/userModel.js";
-import { validateAndFormatPhoneNumber } from "../utils/phoneUtils.js";
+import { validateAndFormatPhoneNumber } from "../utils/phoneutils.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
