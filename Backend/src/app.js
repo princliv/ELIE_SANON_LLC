@@ -11,7 +11,8 @@ const allowedOrigins = [
   "http://localhost:5500",
   "http://127.0.0.1:5500/docs" ,
   "https://prernamishra29.github.io/Illuminant/index.html",
-  "https://www.eliesanon.com"
+  "https://www.eliesanon.com",
+  "https://eliesanon.com"
   // Optional, include if you're serving from here
 ];
 
@@ -27,7 +28,10 @@ app.use(cors({
   },
   credentials: true,
 }));
-
+app.use((req, res, next) => {
+  console.log("🔥 Incoming request:", req.method, req.originalUrl);
+  next();
+});
 // Body parsers
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
