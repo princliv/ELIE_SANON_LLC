@@ -100,7 +100,7 @@ body {
   display: none;
   font-size: 2rem;
   cursor: pointer;
-  color: #fff;
+  color: #0b1c30; /* Changed from white to dark for visibility on white navbar */
 }
 
 /* Animation */
@@ -128,11 +128,18 @@ body {
     text-align: right;
     padding: 1rem 2rem;
   }
+
   .nav-links.active {
     display: flex;
   }
+
+  .nav-links a {
+    color: #ffffff; /* White text for dark mobile menu */
+  }
+
   .menu-toggle {
     display: block;
+    color: #0b1c30; /* Ensure icon is visible on white navbar */
   }
 }
 
