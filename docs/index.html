@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,14 +10,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-  
+
 </head>
+
 <body>
 
   <!-- Header -->
   <header class="navbar">
     <div class="logo">
-        <img src="headerlogo.png" alt="ELIE SANON LLC Logo">
+      <img src="headerlogo.png" alt="ELIE SANON LLC Logo">
     </div>
     <nav class="nav-links" id="navLinks">
       <a href="#home">Home</a>
@@ -33,12 +35,12 @@
 
   <section class="hero">
     <div class="hero-content">
-        <h1>Empowering Business Growth with Expert Consulting</h1>
-        <p>At ELIE SANON LLC, we guide you with tailored strategies to unlock your true business potential.</p>
-        <div class="hero-buttons">
+      <h1>Empowering Business Growth with Expert Consulting</h1>
+      <p>At ELIE SANON LLC, we guide you with tailored strategies to unlock your true business potential.</p>
+      <div class="hero-buttons">
         <a href="#about" class="btn btn-primary">Learn More</a>
         <a href="#contact" class="btn btn-secondary">Contact Us</a>
-        </div>
+      </div>
     </div>
   </section>
 
@@ -113,184 +115,230 @@
         Our <span class="highlight">Services</span>
       </h2>
       <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-        Elie Sanon LLC is not just a consulting firm—it’s a strategic partner for businesses ready to embrace the future of intelligent, technology-driven growth.
+        Elie Sanon LLC is not just a consulting firm—it’s a strategic partner for businesses ready to embrace the future
+        of intelligent, technology-driven growth.
       </p>
 
       <div class="services-grid">
         <div class="service-card" data-aos="zoom-in-up" data-aos-delay="200">
-          <img src="assets/1.jpg" alt="AI-Driven Research" class="service-img" />
-          <h4>AI-Driven Research</h4>
-          <p>We leverage cutting-edge market intelligence tools to deliver proactive, in-depth insights that keep your business ahead of the curve.</p>
-          <a href="#" class="btn-know-more">Know More</a>
+          <img src="assets/service_trust.png" alt="Business Trust + C-Corp" class="service-img" />
+          <h4>Unincorporated Business Trust + C-Corp</h4>
+          <p>A complete setup designed for operational control, business continuity, and professional separation.</p>
+          <a href="javascript:void(0)" class="btn-know-more" onclick="openServiceModal(0)">Know More</a>
         </div>
 
         <div class="service-card" data-aos="zoom-in-up" data-aos-delay="300">
-          <img src="assets/2.jpg" alt="Enhanced Customer Service" class="service-img" />
-          <h4>Enhanced Customer Service</h4>
-          <p>Through AI-powered chatbots and virtual assistants, we ensure fast, personalized client interaction that drives engagement and loyalty.</p>
-          <a href="#" class="btn-know-more">Know More</a>
+          <img src="assets/service_pma.png" alt="Private Member Association" class="service-img" />
+          <h4>Private Member Association</h4>
+          <p>Structured as a 508(c)(1)(A) private, member-based nonprofit for privacy and autonomy.</p>
+          <a href="javascript:void(0)" class="btn-know-more" onclick="openServiceModal(1)">Know More</a>
         </div>
 
         <div class="service-card" data-aos="zoom-in-up" data-aos-delay="400">
-          <img src="assets/3.jpg" alt="Smart Marketing" class="service-img" />
-          <h4>Smart Marketing</h4>
-          <p>Our AI strategies segment audiences, optimize campaigns, and boost visibility for businesses in competitive markets.</p>
-          <a href="#" class="btn-know-more">Know More</a>
+          <img src="assets/service_llc.png" alt="Statutory LLC Formation" class="service-img" />
+          <h4>Statutory LLC Formation + EIN</h4>
+          <p>Fast, streamlined LLC formation including EIN acquisition, completed on your behalf.</p>
+          <a href="javascript:void(0)" class="btn-know-more" onclick="openServiceModal(2)">Know More</a>
         </div>
 
         <div class="service-card" data-aos="zoom-in-up" data-aos-delay="500">
-          <img src="assets/4.jpg" alt="Comprehensive Analytics" class="service-img" />
-          <h4>Comprehensive Analytics</h4>
-          <p>We empower data-driven decisions using predictive modeling and behavioral analysis to anticipate risks and uncover opportunities.</p>
-          <a href="#" class="btn-know-more">Know More</a>
+          <img src="assets/service_credit.png" alt="Business Credit Building" class="service-img" />
+          <h4>Business Credit Building Program</h4>
+          <p>4-5 month program to establish and strengthen business credit profiles separate from personal credit.</p>
+          <a href="javascript:void(0)" class="btn-know-more" onclick="openServiceModal(3)">Know More</a>
         </div>
       </div>
     </div>
   </section>
 
 
-    <!-- Testimonial -->
-    <section id="testimonials" class="testimonials-section">
-      <div class="testimonials-container">
-        <h2 class="section-title" data-aos="fade-up" style="color: #f4f4f4 !important;">What Our <span class="highlight">Clients Say</span></h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" style="color: #f4f4f4 !important;">
-          Real feedback from businesses we've helped grow and succeed.
-        </p>
+  <!-- Testimonial -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="testimonials-container">
+      <h2 class="section-title" data-aos="fade-up" style="color: #f4f4f4 !important;">What Our <span
+          class="highlight">Clients Say</span></h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100" style="color: #f4f4f4 !important;">
+        Real feedback from businesses we've helped grow and succeed.
+      </p>
 
-        <div class="testimonials-grid">
-          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-            <p class="testimonial-text">"Elie Sanon LLC transformed our business operations with a clear and actionable strategy. Their expertise helped us scale faster than we imagined."</p>
-            <div class="testimonial-author">
-              <img src="https://images.pexels.com/photos/3775532/pexels-photo-3775532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100" alt="Client 1">
-              <div>
-                <h4>Daniel Myers</h4>
-                <span>CEO, Myers Solutions</span>
-              </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+          <p class="testimonial-text">"Elie Sanon LLC transformed our business operations with a clear and actionable
+            strategy. Their expertise helped us scale faster than we imagined."</p>
+          <div class="testimonial-author">
+            <img
+              src="https://images.pexels.com/photos/3775532/pexels-photo-3775532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100"
+              alt="Client 1">
+            <div>
+              <h4>Daniel Myers</h4>
+              <span>CEO, Myers Solutions</span>
             </div>
           </div>
+        </div>
 
-          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-            <p class="testimonial-text">"Working with Elie Sanon LLC was a game-changer. Their insights into management and marketing repositioned our brand for the better."</p>
-            <div class="testimonial-author">
-              <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100" alt="Client 2">
-              <div>
-                <h4>Sophia Lee</h4>
-                <span>Founder, Nova Growth</span>
-              </div>
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+          <p class="testimonial-text">"Working with Elie Sanon LLC was a game-changer. Their insights into management
+            and marketing repositioned our brand for the better."</p>
+          <div class="testimonial-author">
+            <img
+              src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100"
+              alt="Client 2">
+            <div>
+              <h4>Sophia Lee</h4>
+              <span>Founder, Nova Growth</span>
             </div>
           </div>
+        </div>
 
-          <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
-            <p class="testimonial-text">"Insightful, strategic, and deeply committed. Elie Sanon LLC helped streamline our operations while keeping our mission at the forefront."</p>
-            <div class="testimonial-author">
-              <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100" alt="Client 3">
-              <div>
-                <h4>Rajesh Kumar</h4>
-                <span>Operations Head, Zenith Co.</span>
-              </div>
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+          <p class="testimonial-text">"Insightful, strategic, and deeply committed. Elie Sanon LLC helped streamline our
+            operations while keeping our mission at the forefront."</p>
+          <div class="testimonial-author">
+            <img
+              src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100"
+              alt="Client 3">
+            <div>
+              <h4>Rajesh Kumar</h4>
+              <span>Operations Head, Zenith Co.</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-<!-- Contact Us -->
-<section id="contact" class="contact-split-modern">
-  <div class="contact-box">
-    <!-- Left: Form -->
-    <div class="contact-left">
-      <h2>Let’s Connect</h2>
-      <form class="floating-form">
-        <div class="input-group">
-          <input type="text" required placeholder=" " />
-          <label>Your Name</label>
-        </div>
-        <div class="input-group">
-          <input type="email" required placeholder=" " />
-          <label>Email Address</label>
-        </div>
-        <div class="input-group">
-          <input type="text" required placeholder=" " />
-          <label>Subject</label>
-        </div>
-        <div class="input-group">
-          <textarea rows="4" required placeholder=" "></textarea>
-          <label>Your Message</label>
-        </div>
-        <button type="submit" class="btn-glow">Send Message</button>
-      </form>
     </div>
+  </section>
 
-    <!-- Right: Image -->
-    <div class="contact-right">
-      <img src="assets/contactus.jpg" alt="Contact Us" />
+  <!-- Contact Us -->
+  <section id="contact" class="contact-split-modern">
+    <div class="contact-box">
+      <!-- Left: Form -->
+      <div class="contact-left">
+        <h2>Let’s Connect</h2>
+        <form class="floating-form">
+          <div class="input-group">
+            <input type="text" required placeholder=" " />
+            <label>Your Name</label>
+          </div>
+          <div class="input-group">
+            <input type="email" required placeholder=" " />
+            <label>Email Address</label>
+          </div>
+          <div class="input-group">
+            <input type="text" required placeholder=" " />
+            <label>Subject</label>
+          </div>
+          <div class="input-group">
+            <textarea rows="4" required placeholder=" "></textarea>
+            <label>Your Message</label>
+          </div>
+          <button type="submit" class="btn-glow">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Right: Image -->
+      <div class="contact-right">
+        <img src="assets/contactus.jpg" alt="Contact Us" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="site-footer" data-aos="fade-up">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-branding">
+          <img src="assets/footerlogo.png" alt="ELIE SANON LLC Logo" class="footer-logo" />
+          <p>Empowering businesses to unlock their true potential through strategic guidance and insight.</p>
+          <div class="footer-socials">
+            <a href="https://x.com/elie_sanon_LLC" class="social-icon twitter" aria-label="Twitter" target="_blank"
+              rel="noopener noreferrer">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/elie-sanon-llc-344b19370/" class="social-icon linkedin"
+              aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://www.facebook.com/people/ELIE-SANON-LLC/100064134961321/" class="social-icon facebook"
+              aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://www.instagram.com/elie_sanon_llc/" class="social-icon instagram" aria-label="Instagram"
+              target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-instagram"></i>
+            </a>
+
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="pages/privacypolicy.html">Privacy Policy</a></li>
+            <li><a href="pages/TermsConditions.html">Terms and Conditions</a></li>
+            <li><a href="pages/Return.html">Return and Refund Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- New Services Column -->
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Business Strategy</a></li>
+            <li><a href="#services">Operational Consulting</a></li>
+            <li><a href="#services">Organizational Design</a></li>
+            <li><a href="#services">Innovation Consulting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <p><i class="fas fa-envelope"></i> contact@eliesanon.com</p>
+          <p><i class="fas fa-phone"></i> 888 274 9017</p>
+          <p><i class="fas fa-fax"></i> (702) 560 0125</p>
+          <p><i class="fas fa-map-marker-alt"></i> 6130 Elton Avenue, Las Vegas, NV 89107, USA</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 ELIE SANON LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <div id="serviceModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeServiceModal()">&times;</span>
+      <div id="modalHeader" class="modal-header">
+        <h2 id="modalTitle"></h2>
+      </div>
+      <div class="modal-body">
+        <span id="modalPrice" class="service-price"></span>
+        <div id="modalOverview" class="service-detail-section">
+          <h3>Service Overview</h3>
+          <p id="modalDescription"></p>
+        </div>
+        <div id="modalIncludedSection" class="service-detail-section">
+          <h3>What’s Included</h3>
+          <ul id="modalIncludedList"></ul>
+        </div>
+        <div id="modalExtraSection" class="service-detail-section">
+          <h3 id="modalExtraTitle"></h3>
+          <ul id="modalExtraList"></ul>
+        </div>
+        <div id="modalIdealSection" class="service-detail-section">
+          <h3>Ideal For</h3>
+          <ul id="modalIdealList"></ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#contact" class="btn btn-primary" onclick="closeServiceModal()">Inquire Now</a>
+      </div>
     </div>
   </div>
-</section>
-
-
-<!-- Footer -->
-<footer class="site-footer" data-aos="fade-up">
-  <div class="footer-container">
-    <div class="footer-top">
-      <div class="footer-branding">
-        <img src="assets/footerlogo.png" alt="ELIE SANON LLC Logo" class="footer-logo" />
-        <p>Empowering businesses to unlock their true potential through strategic guidance and insight.</p>
-        <div class="footer-socials">
-          <a href="https://x.com/elie_sanon_LLC" class="social-icon twitter" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
-
-          <a href="https://www.linkedin.com/in/elie-sanon-llc-344b19370/" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-
-          <a href="https://www.facebook.com/people/ELIE-SANON-LLC/100064134961321/" class="social-icon facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-
-          <a href="https://www.instagram.com/elie_sanon_llc/" class="social-icon instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-instagram"></i>
-          </a>
-
-        </div>
-      </div>
-
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="pages/privacypolicy.html">Privacy Policy</a></li>
-          <li><a href="pages/TermsConditions.html">Terms and Conditions</a></li>
-          <li><a href="pages/Return.html">Return and Refund Policy</a></li>
-        </ul>
-      </div>
-
-      <!-- New Services Column -->
-      <div class="footer-links">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#services">Business Strategy</a></li>
-          <li><a href="#services">Operational Consulting</a></li>
-          <li><a href="#services">Organizational Design</a></li>
-          <li><a href="#services">Innovation Consulting</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-contact">
-        <h4>Contact Us</h4>
-        <p><i class="fas fa-envelope"></i> contact@eliesanon.com</p>
-        <p><i class="fas fa-phone"></i> 888 274 9017</p>
-        <p><i class="fas fa-fax"></i> (702) 560 0125</p>
-        <p><i class="fas fa-map-marker-alt"></i> 6130 Elton Avenue, Las Vegas, NV 89107, USA</p>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 ELIE SANON LLC. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
 
   <script>
     const toggle = document.getElementById("menuToggle");
@@ -298,7 +346,175 @@
     toggle.addEventListener("click", () => {
       nav.classList.toggle("active");
     });
+
+    const servicesData = [
+      {
+        title: "Unincorporated Business Trust + C-Corp",
+        price: "$3,000",
+        description: "A complete done-for-you setup of an Unincorporated Business Trust paired with a C-Corporation structure, designed for operational control, business continuity, and professional separation of interests.",
+        image: "assets/service_trust.png",
+        included: [
+          "Creation and structuring of the Unincorporated Business Trust",
+          "Formation of a C-Corporation aligned to the trust structure",
+          "Preparation of foundational governing documents",
+          "Employer Identification Number (EIN) for the C-Corp",
+          "Proper role designation (Trustee, Officer, Corporate Roles)",
+          "Business purpose alignment and operational setup guidance",
+          "Compliance-ready entity configuration"
+        ],
+        extraTitle: "Pre-Recorded Course covering:",
+        extraItems: [
+          "Trust and corporate fundamentals",
+          "Operational best practices",
+          "Ongoing compliance awareness",
+          "Record-keeping principles"
+        ],
+        idealFor: [
+          "Entrepreneurs seeking advanced business structuring",
+          "Asset-based operators",
+          "Long-term business planners",
+          "Owners preparing for scaling, contracts, or institutional relationships"
+        ]
+      },
+      {
+        title: "Private Member Association (P.M.A.)",
+        price: "$2,700",
+        description: "We establish a Private Member Association (PMA) operating under 508(c)(1)(A) guidelines, structured as a private, member-based nonprofit association.",
+        image: "assets/service_pma.png",
+        included: [
+          "Formation of the Private Member Association",
+          "Custom PMA governing documents",
+          "Membership structure and rules",
+          "Private membership language and disclaimers",
+          "EIN acquisition for the PMA",
+          "Nonprofit organizational setup",
+          "Internal compliance framework",
+          "Operational guidance for member-based activities"
+        ],
+        extraTitle: "Key Characteristics:",
+        extraItems: [
+          "Private, member-only association",
+          "Not publicly soliciting donations",
+          "Operates by private contract among members",
+          "Non-public facing organizational structure"
+        ],
+        idealFor: [
+          "Private business groups",
+          "Educational or membership-based organizations",
+          "Faith-based or private community groups",
+          "Associations seeking privacy and autonomy"
+        ]
+      },
+      {
+        title: "Statutory LLC Formation + EIN",
+        price: "$350",
+        description: "A fast, streamlined Statutory LLC formation service including EIN acquisition, completed on behalf of the client.",
+        image: "assets/service_llc.png",
+        included: [
+          "State-level LLC formation",
+          "Articles of Organization filing",
+          "EIN obtained directly from the IRS",
+          "Ownership and management designation",
+          "Basic compliance setup",
+          "Business entity readiness for banking and vendors"
+        ],
+        extraTitle: "Turnaround:",
+        extraItems: [
+          "Efficient processing with minimal client involvement"
+        ],
+        idealFor: [
+          "New business owners",
+          "Real estate holdings",
+          "Consulting and service businesses",
+          "Side ventures and startups"
+        ]
+      },
+      {
+        title: "Business Credit Building Program",
+        price: "$1,400",
+        description: "A structured Business Credit Build-Out Program designed to establish and strengthen business credit profiles separate from personal credit.",
+        image: "assets/service_credit.png",
+        included: [
+          "Business credit profile setup and verification",
+          "DUNS number creation (if needed)",
+          "Reporting compliance with major business credit bureaus",
+          "Vendor account sequencing strategy",
+          "Trade line establishment",
+          "Credit profile monitoring guidance",
+          "Risk and credibility positioning",
+          "Business credit readiness for future funding"
+        ],
+        extraTitle: "Outcomes:",
+        extraItems: [
+          "Established business credit file",
+          "Improved business credibility",
+          "Increased funding readiness",
+          "Separation of personal and business liability exposure"
+        ],
+        idealFor: [
+          "Businesses seeking future funding",
+          "Owners preparing for leasing, lines of credit, or vendor terms",
+          "Entrepreneurs building long-term financial credibility"
+        ]
+      }
+    ];
+
+    function openServiceModal(index) {
+      const service = servicesData[index];
+      const modal = document.getElementById("serviceModal");
+
+      document.getElementById("modalTitle").innerText = service.title;
+      document.getElementById("modalPrice").innerText = "Price: " + service.price;
+      document.getElementById("modalDescription").innerText = service.description;
+      document.getElementById("modalHeader").style.backgroundImage = `url('${service.image}')`;
+
+      // Clear lists
+      const includedList = document.getElementById("modalIncludedList");
+      const extraList = document.getElementById("modalExtraList");
+      const idealList = document.getElementById("modalIdealList");
+
+      includedList.innerHTML = "";
+      extraList.innerHTML = "";
+      idealList.innerHTML = "";
+
+      service.included.forEach(item => {
+        const li = document.createElement("li");
+        li.innerText = item;
+        includedList.appendChild(li);
+      });
+
+      document.getElementById("modalExtraTitle").innerText = service.extraTitle;
+      service.extraItems.forEach(item => {
+        const li = document.createElement("li");
+        li.innerText = item;
+        extraList.appendChild(li);
+      });
+
+      service.idealFor.forEach(item => {
+        const li = document.createElement("li");
+        li.innerText = item;
+        idealList.appendChild(li);
+      });
+
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden"; // Prevent scrolling
+    }
+
+    function closeServiceModal() {
+      const modal = document.getElementById("serviceModal");
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function (event) {
+      const modal = document.getElementById("serviceModal");
+      if (event.target == modal) {
+        closeServiceModal();
+      }
+    }
   </script>
 
 </body>
+
 </html>
